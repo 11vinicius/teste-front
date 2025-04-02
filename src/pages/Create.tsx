@@ -11,7 +11,7 @@ const Create:React.FC = ()=>{
     const navigate = useNavigate();
 
     const schema = z.object({
-        name: z.string().min(3,'Campo nome obrigatório'),
+        name: z.string().min(8,'Campo deve conter no minimo 8 caracteres'),
         email: z.string().email('Digite um email válido'),
         password: z.string().min(8,'Campo deve conter no minimo 8 caracteres'),
     });
@@ -24,7 +24,7 @@ const Create:React.FC = ()=>{
 
     async function onSubmit(data:User){
         const res = await axios.post('http://localhost:2000', data);
-        console.log(res.data);
+        navigate('/');
     }
 
     function onCancel(){
@@ -80,7 +80,6 @@ const Create:React.FC = ()=>{
             />
             </div>
             <button className="bg-red-800 mr-4 p-2 my-2 text-white rounded-md" onClick={onCancel}>Cancelar</button>
-
             <button className="bg-blue-500  p-2 my-2 text-white rounded-md" onClick={handleSubmit(onSubmit)}>Salvar</button>
         </div>
     )

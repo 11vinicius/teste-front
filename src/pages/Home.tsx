@@ -33,7 +33,7 @@ const Home:React.FC = ()=>{
 
     async function onDelete(id:string){
         await axios.delete(`http://localhost:2000/${id}`);
-        findAll()
+        await findAll()
     }
 
     function onCreate(){
